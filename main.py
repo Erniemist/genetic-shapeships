@@ -7,6 +7,7 @@ def main():
         for j in range(100):
             random.shuffle(new_build_orders)
             build_orders = run_iteration(new_build_orders)
+            new_build_orders = build_orders[::]
         print(build_orders[-1])
         new_build_orders = [build_orders[-1]] * 20
     for build_order in build_orders:
@@ -32,7 +33,7 @@ def run_iteration(build_orders):
                     for n in range(len(actual_build) - 1, -1, -1):
                         if actual_build[n] != end_ship:
                             break
-                    build_orders[index] = actual_build[:min(n + 2, 20)]
+                    build_orders[index] = actual_build[:min(n + 2, 30)]
                 points_i, points_j = players[0].points, players[1].points
                 total_points_i += points_i
                 total_points_j += points_j
