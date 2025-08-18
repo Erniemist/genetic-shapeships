@@ -51,7 +51,6 @@ class Player:
         for ship in self.ships:
             if isinstance(ship, Carrier) and ship.can_spawn(desired_ship):
                 ship.spawn(desired_ship, self)
-                self.ship_log.append(desired_ship)
                 return True
         if issubclass(desired_ship, UpgradedShip):
             result = desired_ship.can_upgrade(self)

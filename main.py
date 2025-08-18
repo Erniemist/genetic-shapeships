@@ -10,7 +10,7 @@ def main():
             new_build_orders = build_orders[::]
         print(build_orders[-1])
         new_build_orders = [build_orders[-1]] * 20
-    for build_order in build_orders:
+    for build_order in build_orders[(len(build_orders) // 2):]:
         print(build_order)
 
 def run_iteration(build_orders):
