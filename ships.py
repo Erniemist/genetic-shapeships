@@ -91,9 +91,9 @@ class Carrier(BasicShip):
         if not self.ready:
             return
         if ship.name == Defender.name:
-            self.charges -= 1
+            self.charges -= Defender.cost
         if ship.name == Fighter.name:
-            self.charges -= 2
+            self.charges -= Fighter.cost
         player.add_ship(ship.make(player.roll))
         self.ready = False
 
