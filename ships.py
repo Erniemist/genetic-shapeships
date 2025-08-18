@@ -81,9 +81,9 @@ class Carrier(BasicShip):
     def can_spawn(self, ship):
         if not self.ready:
             return False
-        if ship.name == Defender.name and self.charges > 0:
+        if ship.name == Defender.name and self.charges >= Defender.cost:
             return True
-        if ship.name == Fighter.name and self.charges > 1:
+        if ship.name == Fighter.name and self.charges >= Fighter.cost:
             return True
         return False
 
