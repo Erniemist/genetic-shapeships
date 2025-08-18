@@ -83,9 +83,9 @@ class Carrier(BasicShip):
     def can_spawn(self, ship):
         if not self.ready:
             return False
-        if ship.name == Defender.name and self.charges >= defender_charges:
+        if ship.name == Defender.name and self.charges >= Carrier.defender_charges:
             return True
-        if ship.name == Fighter.name and self.charges >= fighter_charges:
+        if ship.name == Fighter.name and self.charges >= Carrier.fighter_charges:
             return True
         return False
 
@@ -93,9 +93,9 @@ class Carrier(BasicShip):
         if not self.ready:
             return
         if ship.name == Defender.name:
-            self.charges -= defender_charges
+            self.charges -= Carrier.defender_charges
         if ship.name == Fighter.name:
-            self.charges -= fighter_charges
+            self.charges -= Carrier.fighter_charges
         player.add_ship(ship.make(player.roll))
         self.ready = False
 
