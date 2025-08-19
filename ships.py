@@ -72,6 +72,8 @@ class Carrier(BasicShip):
     cost = 6
     damage = 0
     healing = 0
+    fighter_charges = 2
+    defender_charges = 1
 
     def __init__(self, preference):
         self.charges = 6
@@ -81,9 +83,9 @@ class Carrier(BasicShip):
     def can_spawn(self, ship):
         if not self.ready:
             return False
-        if ship.name == Defender.name and self.charges > 0:
+        if ship.name == Defender.name and self.charges >= Carrier.defender_charges:
             return True
-        if ship.name == Fighter.name and self.charges > 1:
+        if ship.name == Fighter.name and self.charges >= Carrier.fighter_charges:
             return True
         return False
 
@@ -91,9 +93,9 @@ class Carrier(BasicShip):
         if not self.ready:
             return
         if ship.name == Defender.name:
-            self.charges -= 1
+            self.charges -= Carrier.defender_charges
         if ship.name == Fighter.name:
-            self.charges -= 2
+            self.charges -= Carrier.fighter_charges
         player.add_ship(ship.make(player.roll))
         self.ready = False
 
